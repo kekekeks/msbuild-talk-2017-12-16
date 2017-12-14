@@ -1,0 +1,96 @@
+<Project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<Target Name="HelloWorld">
+		<Message Text="Hello world!"/>
+	</Target>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<PropertyGroup>
+		<MyProperty>MyPropertyValue</MyProperty>
+		<CombinedProperty>$(MyProperty)123</CombinedProperty>
+	</PropertyGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<ItemGroup>
+		<MyItem Include="SomeText"/>
+		<MyItem Include="*.csproj"/>
+	</ItemGroup>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<Target Name="Print" DependsOnTargets="HelloWorld">
+		<Message Text="Property: $(CombinedProperty), Items: @(MyItem)"/>
+	</Target>
+
+</Project>

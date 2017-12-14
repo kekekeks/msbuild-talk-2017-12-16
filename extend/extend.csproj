@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <UsingTask TaskName="GenerateVersionFile" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <TemplateFile Required="true" />
+      <OutputFile Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Code Type="Fragment" Language="cs"><![CDATA[  
+             string text = File.ReadAllText(TemplateFile);
+             text = text.Replace("BUILDTIME", DateTime.UtcNow.ToString("u"));
+             File.WriteAllText(OutputFile, text);
+        ]]></Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="GenerateCustomVersionInfo" 
+      BeforeTargets="ResolveAssemblyReferences;ResolveAssemblyReferencesDesignTime">
+    <GenerateVersionFile 
+      TemplateFile="Version.cs.template"
+      OutputFile="$(IntermediateOutputPath)/Version.generated.cs"/>
+    <ItemGroup>
+      <Compile Include="$(IntermediateOutputPath)/Version.generated.cs"/>
+    </ItemGroup>
+  </Target>
+
+
+
+
+  <ItemGroup>
+     <VersionInfoTemplate Include="Version.cs.template">
+       <Generator>MSBuild:GenerateCustomVersionInfo</Generator>
+     </VersionInfoTemplate>
+  </ItemGroup>
+
+
+</Project>

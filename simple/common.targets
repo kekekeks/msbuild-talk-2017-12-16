@@ -1,0 +1,26 @@
+<Project>
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <BaseOutputPath Condition="'$(BaseOutputPath)' == ''">$(MSBuildProjectDirectory)/bin</BaseOutputPath>
+    <OutputPath Condition="'$(OutputPath)' == ''">$(BaseOutputPath)/$(Configuration)</OutputPath>
+    <TargetName Condition="'$(TargetName)' == ''">$(MSBuildProjectName).exe</TargetName>
+    <TargetPath>$(OutputPath)/$(TargetName)</TargetPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.cs"/>
+  </ItemGroup>
+
+  <Target Name="Build">
+    <MakeDir Directories="$(OutputPath)"/>
+    <Exec Command="csc @(Compile) @(Reference->'-r:%(identity).dll') -out:$(TargetPath)"/>
+  </Target>
+
+  <Target Name="Clean">
+    <RemoveDir Directories="$(OutputPath)"/>
+  </Target>
+
+  <Target Name="Run" DependsOnTargets="Build">
+    <Exec Command="$(TargetPath)"/>
+  </Target>
+
+</Project>

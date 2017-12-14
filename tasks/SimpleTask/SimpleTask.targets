@@ -1,0 +1,18 @@
+<Project>
+    <UsingTask TaskName="SimpleTask.GenerateDateTask"
+               AssemblyFile="$(MSBuildThisFileDirectory)..\tools\netstandard1.3\SimpleTask.dll" />
+    <Target Name="PrepareCustomVersionInfoProperties">
+        <PropertyGroup>
+            <CustomVersionInfoNamespace Condition="'$(CustomVersionInfoNamespace)' == ''">AutoBuildInfo</CustomVersionInfoNamespace>
+        </PropertyGroup>
+    </Target>
+    <Target Name="GenerateDate" DependsOnTargets="PrepareCustomVersionInfoProperties"
+            BeforeTargets="ResolveAssemblyReferences;ResolveAssemblyReferencesDesignTime">
+        <GenerateDateTask
+                Namespace="$(CustomVersionInfoNamespace)"
+                OutputPath="$(IntermediateOutputPath)/Version.g.cs"/>
+        <ItemGroup>
+            <Compile Include="$(IntermediateOutputPath)/Version.g.cs"/>
+        </ItemGroup>
+    </Target>
+</Project>

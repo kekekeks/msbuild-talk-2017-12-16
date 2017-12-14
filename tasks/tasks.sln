@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTask", "SimpleTask\SimpleTask.csproj", "{7D1DFE1A-17B1-4DD3-81A8-181E8891408A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{C95D421C-FE34-4710-BD5F-C9C6EF471A0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D1DFE1A-17B1-4DD3-81A8-181E8891408A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1DFE1A-17B1-4DD3-81A8-181E8891408A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1DFE1A-17B1-4DD3-81A8-181E8891408A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1DFE1A-17B1-4DD3-81A8-181E8891408A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C95D421C-FE34-4710-BD5F-C9C6EF471A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C95D421C-FE34-4710-BD5F-C9C6EF471A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C95D421C-FE34-4710-BD5F-C9C6EF471A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C95D421C-FE34-4710-BD5F-C9C6EF471A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+namespace Sample
+{
+	public static class Version
+	{
+		public const string BuildTime = "BUILDTIME";
+	}
+}

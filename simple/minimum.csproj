@@ -1,0 +1,20 @@
+<Project>
+  <ItemGroup>
+    <Compile Include="Program.cs"/>
+    <Reference Include="System.Xml.Linq"/>
+  </ItemGroup>
+
+  <Target Name="Build">
+    <MakeDir Directories="$(OutputPath)"/>
+    <Exec Command="csc @(Compile) @(Reference->'-r:%(identity).dll') -out:bin/hello.exe"/>
+  </Target>
+
+  <Target Name="Clean">
+    <RemoveDir Directories="bin"/>
+  </Target>
+
+  <Target Name="Run" DependsOnTargets="Build">
+    <Exec Command="bin/hello.exe"/>
+  </Target>
+
+</Project>

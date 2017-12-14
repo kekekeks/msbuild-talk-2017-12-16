@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup>
+    <Reference Include="System.Xml.Linq"/>
+  </ItemGroup>
+  <Import Project="common.targets"/> 
+</Project>

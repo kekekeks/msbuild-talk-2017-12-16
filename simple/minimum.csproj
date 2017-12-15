@@ -5,7 +5,7 @@
   </ItemGroup>
 
   <Target Name="Build">
-    <MakeDir Directories="$(OutputPath)"/>
+    <MakeDir Directories="bin"/>
     <Exec Command="csc @(Compile) @(Reference->'-r:%(identity).dll') -out:bin/hello.exe"/>
   </Target>
 
